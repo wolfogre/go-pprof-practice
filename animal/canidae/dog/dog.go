@@ -40,7 +40,7 @@ func (d *Dog) Pee() {
 
 func (d *Dog) Run() {
 	log.Println(d.Name(), "run")
-	_ = make([]byte, 16 * constant.Mi)
+	_ = make([]byte, 16*constant.Mi)
 }
 
 func (d *Dog) Howl() {
