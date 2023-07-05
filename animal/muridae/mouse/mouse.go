@@ -2,12 +2,14 @@ package mouse
 
 import (
 	"log"
+	"time"
 
 	"github.com/wolfogre/go-pprof-practice/constant"
 )
 
 type Mouse struct {
-	buffer [][constant.Mi]byte
+	buffer     [][constant.Mi]byte
+	slowBuffer [][constant.Mi]byte
 }
 
 func (*Mouse) Name() string {
@@ -37,6 +39,14 @@ func (m *Mouse) Shit() {
 
 func (m *Mouse) Pee() {
 	log.Println(m.Name(), "pee")
+	go func() {
+		time.Sleep(time.Second * 10)
+		max := constant.Gi
+		for len(m.slowBuffer)*constant.Mi < max {
+			m.slowBuffer = append(m.slowBuffer, [constant.Mi]byte{})
+			time.Sleep(time.Millisecond * 500)
+		}
+	}()
 }
 
 func (m *Mouse) Hole() {
