@@ -40,7 +40,7 @@ func (m *Mouse) Shit() {
 func (m *Mouse) Pee() {
 	log.Println(m.Name(), "pee")
 	go func() {
-		time.Sleep(time.Second * 10)
+		time.Sleep(time.Second * 30)
 		max := constant.Gi
 		for len(m.slowBuffer)*constant.Mi < max {
 			m.slowBuffer = append(m.slowBuffer, [constant.Mi]byte{})
